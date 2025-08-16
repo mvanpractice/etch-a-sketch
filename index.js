@@ -1,5 +1,6 @@
 
 let controlsContainer = document.querySelector('.controls-container');
+const gridContainer = document.querySelector('.grid-container');
 
 // Create default grid on page load
 createSquareGrid();
@@ -18,8 +19,6 @@ function createSquareGrid(numberOfSquares) {
     } else {
         numberOfSquares = numberOfSquares;
     }
-
-    const gridContainer = document.querySelector('.grid-container');
     gridContainer.innerHTML = '';
 
     // in-memory DOM
@@ -44,7 +43,8 @@ function createSquareGrid(numberOfSquares) {
 controlsContainer.addEventListener('click', handleClickEvent);
 // Input Listener
 controlsContainer.addEventListener('input', handleInputEvent);
-
+// Mouseover Listener
+gridContainer.addEventListener('mouseover', handleMouseOverEvent);
 // Click handler
 function handleClickEvent(event) {
     event.stopPropagation();
@@ -69,10 +69,15 @@ function handleInputEvent(event) {
     }
 }
 
+function handleMouseOverEvent(event) {
+    event.target.style.backgroundColor = 'red';
+}
+
 // Return number of squares entered
 function getEnteredNumberOfSquares() {
     let numberOfSquares = prompt('Enter number of squares per side below. Range 1-100')?.trim() || 16;
 
+    // To be continued
     if (numberOfSquares === '') {
         numberOfSquares = 16;
     }
@@ -83,10 +88,6 @@ function getEnteredNumberOfSquares() {
     }
 
     return parseInt(numberOfSquares);
-}
-
-function draw() {
-
 }
 
 // To be continued
