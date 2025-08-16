@@ -41,10 +41,12 @@ function createSquareGrid(numberOfSquares) {
 }
 
 // Click listener
-controlsContainer.addEventListener('click', handleClick);
+controlsContainer.addEventListener('click', handleClickEvent);
+// Input Listener
+controlsContainer.addEventListener('input', handleInputEvent);
 
 // Click handler
-function handleClick(event) {
+function handleClickEvent(event) {
     event.stopPropagation();
 
     if (event.target.closest('button') && event.target.id === 'number-of-squares-btn') {
@@ -55,6 +57,15 @@ function handleClick(event) {
     if (event.target.closest('button') && event.target.id === 'reset-to-default-squares') {
         localStorage.removeItem('numberOfSquares');
         createSquareGrid();
+    }
+}
+
+function handleInputEvent(event) {
+    event.stopPropagation();
+
+    if (event.target.id === 'sketch-pad-bg-color') {
+        // Change sketchpad bgcolor
+        changeSketchPadBGColor(event.target.value);
     }
 }
 
@@ -76,4 +87,12 @@ function getEnteredNumberOfSquares() {
 
 function draw() {
 
+}
+
+// To be continued
+function changeSketchPadBGColor(bgColor) {
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach((box) => {
+        box.style.backgroundColor = bgColor;
+    });
 }
