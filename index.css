@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    padding: 20px;
+}
+
+body .controls-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+body .grid-container {
+    background-color: rgb(228, 223, 223);
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    height: 960px;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+body .grid-container .box {
+    background-color: rgb(250, 247, 247);
+    border: 1px solid rgb(222, 222, 222);
+    flex: 0 0 calc(100% / var(--row-col));
+    aspect-ratio: 1 / 1;
+} 
